@@ -5,4 +5,4 @@ spring:
 
 management.endpoints.web.exposure.include: "*"
 
-title: Spring Sensors Database
+title: Weather Sensors Database
