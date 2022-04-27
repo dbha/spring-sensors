@@ -1,0 +1,3 @@
+./mvnw spring-boot:build-image
+docker tag docker.io/library/sensors:0.1 theryanbaker/sensors:0.1
+docker push theryanbaker/tanzu-application-platform/sensors:0.1
