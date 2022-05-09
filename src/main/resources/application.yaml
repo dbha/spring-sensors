@@ -5,4 +5,4 @@ spring:
 
 management.endpoints.web.exposure.include: "*"
 
-title: TAP-MultiCluster Sensors Database
+title: TAP-Deliverable Sensors Database
