@@ -9,7 +9,7 @@ metadata:
     - web
     - tanzu
   annotations:
-    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=spring-sensors-gitops'
+    'backstage.io/kubernetes-label-selector': 'app.kubernetes.io/part-of=spring-sensors'
 spec:
   type: service
   lifecycle: experimental
