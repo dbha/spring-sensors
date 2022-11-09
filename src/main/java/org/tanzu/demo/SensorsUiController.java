@@ -1,11 +1,16 @@
 package org.tanzu.demo;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Controller;
+//import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+//import org.springframework.web.bind.annotation.GetMapping;
 
-@Controller
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+@RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class SensorsUiController {
 
     private final SensorRepository sensorRepository;
@@ -17,7 +22,7 @@ public class SensorsUiController {
         this.sensorRepository = sensorRepository;
     }
 
-    @GetMapping
+    @RequestMapping("/")
     public String fetchUI(Model model) {
         model.addAttribute("sensors", sensorRepository.findAll());
         model.addAttribute("title", title);
