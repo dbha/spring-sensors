@@ -19,7 +19,7 @@ spec:
     value:
       apps.tanzu.vmware.com/language: java
       apps.tanzu.vmware.com/pipeline: test 
-source:
+  source:
     git:
       url: https://github.com/dbha/spring-sensors
       ref:
