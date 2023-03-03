@@ -26,6 +26,7 @@ public class SensorsUiController {
     public String fetchUI(Model model) {
         model.addAttribute("sensors", sensorRepository.findAll());
         model.addAttribute("title", title);
+        // System.out.println("Spring Sensor Demo Test : " + title);
         return "index";
     }
 }
