@@ -1,0 +1,70 @@
+accelerator:
+  displayName: Spring-Sensors
+  description: A spring-sensors springboot app
+  iconUrl: https://images.freecreatives.com/wp-content/uploads/2015/05/smiley-559124_640.jpg
+  tags:
+  - java
+  - getting-started
+
+  options:
+    - name: title
+      label: Title
+      description: Title text for the application
+      inputType: text
+      dataType: string
+      defaultValue: "A spring-sensors springboot app"
+
+    - name: gitUrl
+      label: Git Repository URL
+      description: Git Repository URL of the application's source code
+      inputType: text
+      dataType: string
+      defaultValue: "https://github.com/dbha/spring-sensors.git"
+
+    - name: gitBranch
+      label: Git Repository Branch
+      description: Git Repository Branch of the application's source code
+      inputType: text
+      dataType: string
+      defaultValue: "main"
+
+    # - name: publisherRepository
+    #   inputType: text
+    #   label: Name of repository to use for the publisher container image
+    #   defaultValue: index.docker.io/springdeveloper/spring-sensors-publisher
+    #   description: The repository name to use for the publisher image built as part of this sample. Specify server/repository that match what was specified for registry.server and registry.repository for ootb-supply-chain-basic.
+    #   required: true
+
+
+engine:
+  merge:
+    - include: [ "**" ]
+      exclude: [ "config/workload.yaml", "catalog/*.yaml" ]
+    - include: [ "config/workload.yaml" ]
+      chain:
+        - type: ReplaceText
+          substitutions:
+            - text: https://github.com/dbha/spring-sensors.git
+              with: "#gitUrl"
+            - text: main
+              with: "#gitBranch"
+        - type: RewritePath
+          rewriteTo: "'config/' + #filename"
+    # - include: [ "src/main/resources/application.yaml" ]
+    #   chain:
+    #     - type: ReplaceText
+    #       substitutions:
+    #          - text: Sensor Database
+    #            with: "#title"
+    # - include: [ "demo/publisher-deployment.yaml", "demo/publisher-image.yaml" ]
+    #   chain:
+    #     - type: ReplaceText
+    #       substitutions:
+    #         - text: dev.local/spring-sensors-publisher
+    #           with: "#publisherRepository"
+    - include: [ "catalog/*.yaml" ]
+      chain:
+      - type: ReplaceText
+        substitutions:
+        - text: spring-sensors
+          with: "#artifactId"
